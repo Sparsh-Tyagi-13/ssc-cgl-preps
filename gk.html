@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GK Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .question {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        label:hover {
+            background: #e0e0e0;
+        }
+        #submitBtn, #showAnswersBtn {
+            margin: 20px 10px 0 0;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>GK Quiz</h1>
+
+<form id="quizForm">
+    <!-- Questions will be inserted here dynamically -->
+</form>
+
+<button id="showAnswersBtn" onclick="showAnswers()">Show Answers</button>
+<div id="score"></div>
+
+<script>
+const questions = [
+    {q: "What is the capital of India?", options: ["New Delhi", "Mumbai", "Kolkata", "Chennai"], answer: 0},
+    {q: "Who wrote the Indian national anthem?", options: ["Rabindranath Tagore", "Bankim Chandra", "Mahatma Gandhi", "Jawaharlal Nehru"], answer: 0},
+    {q: "What is the national animal of India?", options: ["Lion", "Tiger", "Elephant", "Leopard"], answer: 1},
+    {q: "Who is known as the father of the Indian Constitution?", options: ["Mahatma Gandhi", "B. R. Ambedkar", "Jawaharlal Nehru", "Subhash Chandra Bose"], answer: 1},
+    {q: "What is the largest state in India by area?", options: ["Madhya Pradesh", "Maharashtra", "Rajasthan", "Uttar Pradesh"], answer: 2},
+    {q: "Which river is the longest in India?", options: ["Ganga", "Yamuna", "Godavari", "Krishna"], answer: 0},
+    {q: "Who was the first Prime Minister of India?", options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel", "Subhash Chandra Bose"], answer: 0},
+    {q: "Which festival is known as the festival of lights?", options: ["Holi", "Diwali", "Dussehra", "Raksha Bandhan"], answer: 1},
+    {q: "Who discovered the sea route to India?", options: ["Christopher Columbus", "Vasco da Gama", "Marco Polo", "Ibn Battuta"], answer: 1},
+    {q: "Which planet is known as the Red Planet?", options: ["Mars", "Venus", "Jupiter", "Saturn"], answer: 0},
+    {q: "Which gas is most abundant in the Earth's atmosphere?", options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], answer: 1},
+    {q: "How many continents are there on Earth?", options: ["5", "6", "7", "8"], answer: 2},
+    {q: "What is the smallest country in the world?", options: ["Vatican City", "Monaco", "Nauru", "Malta"], answer: 0},
+    {q: "Which instrument is used to measure temperature?", options: ["Thermometer", "Barometer", "Hygrometer", "Anemometer"], answer: 0},
+    {q: "Which organ purifies our blood?", options: ["Heart", "Liver", "Lungs", "Kidney"], answer: 3},
+    {q: "Which metal is liquid at room temperature?", options: ["Mercury", "Gold", "Silver", "Copper"], answer: 0},
+    {q: "Who was the first woman Prime Minister of India?", options: ["Sonia Gandhi", "Indira Gandhi", "Sarojini Naidu", "Kalpana Chawla"], answer: 1},
+    {q: "What is the hardest natural substance on Earth?", options: ["Gold", "Iron", "Diamond", "Platinum"], answer: 2}
+];
+
+function loadQuestions() {
+    const quizForm = document.getElementById('quizForm');
+    questions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<p><b>Q${idx+1}:</b> ${q.q}</p>`;
+        q.options.forEach((opt, optIdx) => {
+            div.innerHTML += `
+                <label>
+                    <input type="radio" name="q${idx}" value="${optIdx}">
+                    ${opt}
+                </label>
+            `;
+        });
+        quizForm.appendChild(div);
+    });
+}
+
+function showAnswers() {
+    let score = 0;
+    questions.forEach((q, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected) {
+            if (parseInt(selected.value) === q.answer) {
+                score++;
+            }
+        }
+        const options = document.getElementsByName(`q${idx}`);
+        options[q.answer].parentElement.style.backgroundColor = '#c8e6c9'; // green
+    });
+    document.getElementById('score').innerText = `You scored ${score}/${questions.length}`;
+}
+
+loadQuestions();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .question {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        label:hover {
+            background: #e0e0e0;
+        }
+        #submitBtn, #showAnswersBtn {
+            margin: 20px 10px 0 0;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>English Quiz</h1>
+
+<form id="quizForm">
+    <!-- Questions will be inserted here dynamically -->
+</form>
+
+<button id="showAnswersBtn" onclick="showAnswers()">Show Answers</button>
+<div id="score"></div>
+
+<script>
+const questions = [
+    {
+        q: "The blind’s life is really miserable because they can’t see what happens around them.",
+        options: ["The blind’s life is", "really miserable", "because they can’t see", "what happens around them."],
+        answer: 0
+    },
+    {
+        q: "I have been informed that Dr. Sinha visits Bihar the following month.",
+        options: ["I have been informed", "that Dr. Sinha visits Bihar", "the following month.", "No error"],
+        answer: 1
+    },
+    {
+        q: "Don’t talk to him, he always remains in temper these days.",
+        options: ["Don’t talk to him", "he always remains", "in temper these days.", "No error"],
+        answer: 2
+    },
+    {
+        q: "He found himself in a trouble when he saw no rickshaw outside the station.",
+        options: ["He found", "himself in a trouble", "when he saw no", "rickshaw outside the station."],
+        answer: 1
+    },
+    {
+        q: "Jerry suggested to his brothers that they should go to the school regularly and do their homework sincerely.",
+        options: ["Jerry suggested to", "his brothers that they should", "go to the school regularly", "and do their homework sincerely."],
+        answer: 2
+    },
+    {
+        q: "In India electorates are not allowed to oppose Indian constitution in any case.",
+        options: ["In India electorates are", "not allowed to", "oppose Indian constitution in any case.", "No error"],
+        answer: 0
+    },
+    {
+        q: "The fleet of Iraq was destroyed by the multinational forces during the gulf war in 1991.",
+        options: ["The fleet of Iraq", "was destroyed by the", "multinational forces during the gulf war", "in 1991."],
+        answer: 3
+    },
+    {
+        q: "The dreg of the river were also affected by the boating.",
+        options: ["The dreg of the river", "were also affected", "by the boating.", "No error"],
+        answer: 0
+    },
+    {
+        q: "She very much likes the history of English literature of the sixteen and eighteen century.",
+        options: ["She very much likes", "the history of English", "literature of the sixteen and eighteen century.", "No error"],
+        answer: 2
+    },
+    {
+        q: "My father likes Eliot’s essays who was a masterpiece critic and reputed grammarian of English.",
+        options: ["My father likes", "Eliot’s essays who was a", "masterpiece critic and reputed grammarian of English.", "No error"],
+        answer: 1
+    },
+    {
+        q: "The Principal is displeased with us because he does not understand why we object to him coming with Mohan.",
+        options: ["The Principal is displeased", "with us because", "he does not understand why we", "object to him coming with Mohan."],
+        answer: 3
+    },
+    {
+        q: "Mr. Prakash told his staff that each of them should be able to carry out the work himself in time.",
+        options: ["Mr. Prakash told his staff", "that each of them", "should be able to carry out the work himself in time.", "No error"],
+        answer: 2
+    },
+    {
+        q: "In the local Rajmapa company there are no less than two lakh workers about the four times needed to produce the same products.",
+        options: ["In the local Rajmapa company there are", "no less than two lakh workers", "about the four times", "needed to produce the same products."],
+        answer: 1
+    },
+    {
+        q: "I do not like these kind of pens which have been bought from the market.",
+        options: ["I do not like these kind", "of pens which have", "been bought from the market.", "No error"],
+        answer: 0
+    },
+    {
+        q: "They chose rather to bear all hardship than make away themselves.",
+        options: ["They chose rather to", "bear all hardship than make away", "themselves.", "No error"],
+        answer: 1
+    }
+];
+
+function loadQuestions() {
+    const quizForm = document.getElementById('quizForm');
+    questions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<p><b>Q${idx+1}:</b> ${q.q}</p>`;
+        q.options.forEach((opt, optIdx) => {
+            div.innerHTML += `
+                <label>
+                    <input type="radio" name="q${idx}" value="${optIdx}">
+                    ${opt}
+                </label>
+            `;
+        });
+        quizForm.appendChild(div);
+    });
+}
+
+function showAnswers() {
+    let score = 0;
+    questions.forEach((q, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected) {
+            if (parseInt(selected.value) === q.answer) {
+                score++;
+            }
+        }
+        const options = document.getElementsByName(`q${idx}`);
+        options[q.answer].parentElement.style.backgroundColor = '#c8e6c9'; // green
+    });
+    document.getElementById('score').innerText = `You scored ${score}/${questions.length}`;
+}
+
+loadQuestions();
+</script>
+
+</body>
+</html>

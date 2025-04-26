@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reasoning Quiz</title>
+    <a>href="index.html"</a>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .question {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        label:hover {
+            background: #e0e0e0;
+        }
+        #showAnswersBtn {
+            margin: 20px 10px 0 0;
+            padding: 10px 20px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Reasoning Quiz</h1>
+
+<form id="quizForm">
+    <!-- Questions will load here -->
+</form>
+
+<button id="showAnswersBtn" onclick="showAnswers()">Show Answers</button>
+<div id="score"></div>
+
+<script>
+const questions = [
+    {q: "Which number should come next in the series? 2, 4, 8, 16, ?", options: ["18", "24", "32", "64"], answer: 2},
+    {q: "If CAT is coded as XZG, then DOG is coded as?", options: ["WLT", "WLV", "WLV", "WLX"], answer: 1},
+    {q: "Find the odd one out: Apple, Banana, Carrot, Mango", options: ["Apple", "Banana", "Carrot", "Mango"], answer: 2},
+    {q: "Which word cannot be formed from 'INTEGRATION'?", options: ["GREAT", "RING", "GRANT", "TEACH"], answer: 3},
+    {q: "If TABLE is written as GZOOV, then CHAIR is written as?", options: ["XEVOB", "XZHVU", "XSRHV", "XZHSV"], answer: 3},
+    {q: "A clock shows 3:00. What is the angle between the hour and minute hand?", options: ["90°", "75°", "60°", "45°"], answer: 0},
+    {q: "Choose the missing term: 3, 6, 18, 72, ?", options: ["360", "216", "432", "288"], answer: 1},
+    {q: "If A=1, B=2, ..., then what is the sum of the word DOG?", options: ["20", "26", "26", "22"], answer: 1},
+    {q: "Find the odd one out: Square, Circle, Triangle, Rectangle", options: ["Square", "Circle", "Triangle", "Rectangle"], answer: 1},
+    {q: "Which one is different from the others?", options: ["Pen", "Pencil", "Eraser", "Brush"], answer: 2},
+    {q: "Which day follows the day before yesterday if today is Wednesday?", options: ["Monday", "Tuesday", "Sunday", "Thursday"], answer: 1},
+    {q: "If all dogs are animals and some animals are cats, which is true?", options: ["All dogs are cats", "All cats are dogs", "Some cats are animals", "No cats are dogs"], answer: 2},
+    {q: "A man walks 3 km north, then 4 km east. How far is he from starting point?", options: ["5 km", "7 km", "6 km", "4 km"], answer: 0},
+    {q: "Which number is missing? 5, 9, 17, 33, ?", options: ["49", "65", "57", "69"], answer: 2},
+    {q: "If Z=1, Y=2, ..., then A=?", options: ["25", "24", "26", "23"], answer: 2},
+    {q: "Complete the series: 121, 144, 169, 196, ?", options: ["211", "225", "221", "216"], answer: 1},
+    {q: "If 5 + 2 = 14 and 6 + 3 = 27, what is 7 + 4?", options: ["35", "44", "36", "45"], answer: 3},
+    {q: "Which number replaces the question mark? 2, 6, 12, 20, ?", options: ["28", "30", "32", "36"], answer: 0},
+    {q: "Pointing to a girl, Sohan said, 'She is the daughter of my mother's only son'. Who is the girl?", options: ["Sister", "Daughter", "Niece", "Cousin"], answer: 1},
+    {q: "If 3 cats kill 3 rats in 3 minutes, how many cats are needed to kill 100 rats in 100 minutes?", options: ["3", "9", "30", "1"], answer: 0}
+];
+
+function loadQuestions() {
+    const quizForm = document.getElementById('quizForm');
+    questions.forEach((q, idx) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.innerHTML = `<p><b>Q${idx+1}:</b> ${q.q}</p>`;
+        q.options.forEach((opt, optIdx) => {
+            div.innerHTML += `
+                <label>
+                    <input type="radio" name="q${idx}" value="${optIdx}">
+                    ${opt}
+                </label>
+            `;
+        });
+        quizForm.appendChild(div);
+    });
+}
+
+function showAnswers() {
+    let score = 0;
+    questions.forEach((q, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected) {
+            if (parseInt(selected.value) === q.answer) {
+                score++;
+            }
+        }
+        const options = document.getElementsByName(`q${idx}`);
+        options[q.answer].parentElement.style.backgroundColor = '#c8e6c9'; // correct: green
+    });
+    document.getElementById('score').innerText = `You scored ${score}/${questions.length}`;
+}
+
+loadQuestions();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGL Preps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question-section {
+            margin: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .question {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .options li:hover {
+            background-color: #f0f0f0;
+        }
+        .answer {
+            font-size: 14px;
+            font-weight: bold;
+            color: green;
+            display: none; /* Hide answer by default */
+        }
+        .incorrect {
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        .red-line {
+            border-bottom: 2px solid red;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CGL Preps</h1>
+        <p>Your Daily SSC CGL Companion</p>
+    </header>
+
+    <main>
+        <div class="question-section" id="q1">
+            <div class="question">1. A dishonest seller gives 870 gm instead of 1000 gm. Find the profit percentage?</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'D', 'q1')">A) 12.5%</li>
+                <li onclick="checkAnswer(this, 'B', 'q1')">B) 15%</li>
+                <li onclick="checkAnswer(this, 'C', 'q1')">C) 13.8%</li>
+                <li onclick="checkAnswer(this, 'D', 'q1')">D) 14%</li>
+            </ul>
+            <div class="answer" id="answer1">Answer: D) 14%</div>
+        </div>
+
+        <div class="question-section" id="q2">
+            <div class="question">2. On selling a product, a discount of 40% is given, and a profit of 10% is earned. The marked price is 550, find the cost price.</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'B', 'q2')">A) 350</li>
+                <li onclick="checkAnswer(this, 'B', 'q2')">B) 300</li>
+                <li onclick="checkAnswer(this, 'C', 'q2')">C) 375</li>
+                <li onclick="checkAnswer(this, 'D', 'q2')">D) 400</li>
+            </ul>
+            <div class="answer" id="answer2">Answer: B) 300</div>
+        </div>
+
+        <div class="question-section" id="q3">
+            <div class="question">3. Distance between the centers of two circles is 37 cm, and their radii are 22 cm and 13 cm, respectively. Find the transverse common tangent.</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q3')">A) 21 cm</li>
+                <li onclick="checkAnswer(this, 'B', 'q3')">B) 20 cm</li>
+                <li onclick="checkAnswer(this, 'C', 'q3')">C) 19 cm</li>
+                <li onclick="checkAnswer(this, 'D', 'q3')">D) 18 cm</li>
+            </ul>
+            <div class="answer" id="answer3">Answer: A) 21 cm</div>
+        </div>
+
+        <div class="question-section" id="q4">
+            <div class="question">4. Average marks of boys and girls are 80 and 75, respectively. The average marks of the class are 78. Find the ratio.</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q4')">A) 3:5</li>
+                <li onclick="checkAnswer(this, 'B', 'q4')">B) 5:3</li>
+                <li onclick="checkAnswer(this, 'C', 'q4')">C) 4:5</li>
+                <li onclick="checkAnswer(this, 'D', 'q4')">D) 3:4</li>
+            </ul>
+            <div class="answer" id="answer4">Answer: A) 3:5</div>
+        </div>
+
+        <div class="question-section" id="q5">
+            <div class="question">5. cos²(1°) + cos²(69°)?</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q5')">A) 1</li>
+                <li onclick="checkAnswer(this, 'B', 'q5')">B) 0.5</li>
+                <li onclick="checkAnswer(this, 'C', 'q5')">C) 0.9</li>
+                <li onclick="checkAnswer(this, 'D', 'q5')">D) 0.8</li>
+            </ul>
+            <div class="answer" id="answer5">Answer: A) 1</div>
+        </div>
+
+        <div class="question-section" id="q6">
+            <div class="question">6. In an equilateral triangle, 2 sides are 16 cm each. Find the third side.</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q6')">A) 16 cm</li>
+                <li onclick="checkAnswer(this, 'B', 'q6')">B) 18 cm</li>
+                <li onclick="checkAnswer(this, 'C', 'q6')">C) 20 cm</li>
+                <li onclick="checkAnswer(this, 'D', 'q6')">D) 14 cm</li>
+            </ul>
+            <div class="answer" id="answer6">Answer: A) 16 cm</div>
+        </div>
+
+        <div class="question-section" id="q7">
+            <div class="question">7. P is 21 times efficient than Q, if Q completes work in 110 days, then find in how many days P+Q will complete the work?</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'B', 'q7')">A) 5 days</li>
+                <li onclick="checkAnswer(this, 'B', 'q7')">B) 5.22 days</li>
+                <li onclick="checkAnswer(this, 'C', 'q7')">C) 7 days</li>
+                <li onclick="checkAnswer(this, 'D', 'q7')">D) 10 days</li>
+            </ul>
+            <div class="answer" id="answer7">Answer: B) 5.22 days</div>
+        </div>
+
+        <div class="question-section" id="q8">
+            <div class="question">8. x² - 9 / x + 3?</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q8')">A) x - 3</li>
+                <li onclick="checkAnswer(this, 'B', 'q8')">B) x + 3</li>
+                <li onclick="checkAnswer(this, 'C', 'q8')">C) x - 9</li>
+                <li onclick="checkAnswer(this, 'D', 'q8')">D) x + 9</li>
+            </ul>
+            <div class="answer" id="answer8">Answer: A) x - 3</div>
+        </div>
+
+        <div class="question-section" id="q9">
+            <div class="question">9. 5 rupee, 2 rupee, and 1 rupee coins total 40 and total rupees 100. Find number of 5 rupee coins?</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'A', 'q9')">A) 10</li>
+                <li onclick="checkAnswer(this, 'B', 'q9')">B) 15</li>
+                <li onclick="checkAnswer(this, 'C', 'q9')">C) 20</li>
+                <li onclick="checkAnswer(this, 'D', 'q9')">D) 25</li>
+            </ul>
+            <div class="answer" id="answer9">Answer: A) 10</div>
+        </div>
+
+        <div class="question-section" id="q10">
+            <div class="question">10. In a circle, there are two parallel chords whose length is 10 cm and 24 cm, and the distance between them is 7 cm. Find the diameter of the circle.</div>
+            <ul class="options">
+                <li onclick="checkAnswer(this, 'C', 'q10')">A) 18 cm</li>
+                <li onclick="checkAnswer(this, 'B', 'q10')">B) 20 cm</li>
+                <li onclick="checkAnswer(this, 'C', 'q10')">C) 22 cm</li>
+                <li onclick="checkAnswer(this, 'D', 'q10')">D) 24 cm</li>
+            </ul>
+            <div class="answer" id="answer10">Answer: C) 22 cm</div>
+        </div>
+
+        <div class="result" id="result">All answers are attempted! Check the results above each question.</div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 CGL Preps. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let answersAttempted = 0;
+
+        function checkAnswer(element, correctAnswer, questionId) {
+            const parent = element.closest('.question-section');
+            const options = parent.querySelectorAll('.options li');
+            const answerDisplay = parent.querySelector('.answer');
+
+            // Reset background color for all options
+            options.forEach(option => option.style.backgroundColor = '#f4f4f4');
+
+            // Mark the selected option
+            if (element.textContent.charAt(0) === correctAnswer) {
+                element.style.backgroundColor = 'green';
+                answerDisplay.style.color = 'green';
+                answerDisplay.style.display = 'block'; // Show answer
+                answersAttempted++;
+            } else {
+                element.style.backgroundColor = 'red';
+                answerDisplay.style.color = 'red';
+                answerDisplay.style.display = 'block'; // Show answer
+                element.classList.add('red-line');
+            }
+
+            // Check if all answers are attempted
+            if (answersAttempted === 10) {
+                document.getElementById('result').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
